@@ -1,0 +1,555 @@
+
+<!-- saved from url=(0066)https://codetudau.com/machine-learning-nlp-scikit-learn/index.html -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+    Machine Learning - NLP: Text Classification sử dụng sklearn python | Code từ đầu - machine learning
+    </title>
+
+    
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="https://codetudau.com/favicon.png">
+
+    <!--<link rel="stylesheet" type="text/css" href="/assets/css/screen.css?v=62858937c8" />-->
+
+    <link rel="stylesheet" href="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/monokai_sublime.css">
+    <link rel="stylesheet" href="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/default.css">
+    <link rel="stylesheet" href="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/elusive-icons.min.css">
+
+    <meta name="description" content="Ứng dụng machine learning(bag-of-words, tf-idf, naive-bayes, SVM) xử lý ngôn ngữ tự nhiên cụ thể là bài toán text classification.">
+    <link rel="shortcut icon" href="https://codetudau.com/favicon.png" type="image/png">
+    <link rel="canonical" href="https://codetudau.com/machine-learning-nlp-scikit-learn/index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://codetudau.com/machine-learning-nlp-scikit-learn/amp/index.html">
+    
+    <meta property="og:site_name" content="Code từ đầu - machine learning">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Machine Learning - NLP: Text Classification sử dụng sklearn python">
+    <meta property="og:description" content="Ứng dụng machine learning(bag-of-words, tf-idf, naive-bayes, SVM) xử lý ngôn ngữ tự nhiên, bài toán text classification.">
+    <meta property="og:url" content="http://localhost:2368/machine-learning-nlp-scikit-learn/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2018/01/trang-bia-1.png">
+    <meta property="article:published_time" content="2018-01-28T14:17:19.000Z">
+    <meta property="article:modified_time" content="2018-01-28T14:17:19.000Z">
+    <meta property="article:tag" content="NLP">
+    <meta property="article:tag" content="Xử lý ngôn ngữ tự nhiên">
+    <meta property="article:tag" content="bag-of-words">
+    <meta property="article:tag" content="tf-idf">
+    <meta property="article:tag" content="python">
+    <meta property="article:tag" content="machine learning">
+    <meta property="article:tag" content="pipeline">
+    <meta property="article:tag" content="sklearn">
+    <meta property="article:tag" content="SVM">
+    <meta property="article:tag" content="Naive-Bayes">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/passion1907">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Machine Learning - NLP: Text Classification sử dụng sklearn python">
+    <meta name="twitter:description" content="Ứng dụng machine learning(bag-of-words, tf-idf, naive-bayes, SVM) xử lý ngôn ngữ tự nhiên, bài toán text classification.">
+    <meta name="twitter:url" content="http://localhost:2368/machine-learning-nlp-scikit-learn/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2018/01/trang-bia-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="T.T.T">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="NLP, Xử lý ngôn ngữ tự nhiên, bag-of-words, tf-idf, python, machine learning, pipeline, sklearn, SVM, Naive-Bayes">
+    <meta name="twitter:site" content="@AdwardVn">
+    <meta property="og:image:width" content="700">
+    <meta property="og:image:height" content="350">
+    
+    <script type="text/javascript" async="" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/analytics.js.tải xuống"></script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Code từ đầu - machine learning",
+        "logo": "http://localhost:2368/content/images/2017/08/kkkkkkkk.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "T.T.T",
+        "url": "http://localhost:2368/author/codetudau/",
+        "sameAs": [
+            "http://codetudau.com"
+        ]
+    },
+    "headline": "Machine Learning - NLP: Text Classification sử dụng sklearn python",
+    "url": "http://localhost:2368/machine-learning-nlp-scikit-learn/",
+    "datePublished": "2018-01-28T14:17:19.000Z",
+    "dateModified": "2018-01-28T14:17:19.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2018/01/trang-bia-1.png",
+        "width": 700,
+        "height": 350
+    },
+    "keywords": "NLP, Xử lý ngôn ngữ tự nhiên, bag-of-words, tf-idf, python, machine learning, pipeline, sklearn, SVM, Naive-Bayes",
+    "description": "Ứng dụng machine learning(bag-of-words, tf-idf, naive-bayes, SVM) xử lý ngôn ngữ tự nhiên, bài toán text classification.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/ghost-sdk.js.tải xuống"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "2575335f4165"
+});
+</script>
+    <meta name="generator" content="Ghost 1.7">
+    <link rel="alternate" type="application/rss+xml" title="Code từ đầu - machine learning" href="https://codetudau.com/rss/index.html">
+
+    <!-- Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-108925357-1');
+    </script>
+
+    <script type="text/javascript" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/jquery.js.tải xuống"></script>
+
+    <!-- 2017-12-14 add lib vide for display background video -->
+    <script type="text/javascript" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/jquery.vide.min.js.tải xuống"></script>
+
+    <!--<link rel="stylesheet" href="/assets/css/default.css?v=62858937c8">-->
+
+    <script src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/highlight.pack.js.tải xuống"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+
+</script>
+<script src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/embed.js.tải xuống" data-timestamp="1601728415217"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style>._3emE9--dark-theme .-S-tR--ff-downloader{background:rgba(30,30,30,.93);border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#fff}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{background:#3d4b52}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#131415}._3emE9--dark-theme .-S-tR--ff-downloader ._10vpG--footer{background:rgba(30,30,30,.93)}._2mDEx--white-theme .-S-tR--ff-downloader{background:#fff;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#314c75}._2mDEx--white-theme .-S-tR--ff-downloader ._6_Mtt--header{font-weight:700}._2mDEx--white-theme .-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{border:0;color:rgba(0,0,0,.88)}._2mDEx--white-theme .-S-tR--ff-downloader ._10vpG--footer{background:#fff}.-S-tR--ff-downloader{display:block;overflow:hidden;position:fixed;bottom:20px;right:7.1%;width:330px;height:180px;background:rgba(30,30,30,.93);border-radius:2px;color:#fff;z-index:99999999;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);transition:.5s}.-S-tR--ff-downloader._3M7UQ--minimize{height:62px}.-S-tR--ff-downloader._3M7UQ--minimize .nxuu4--file-info,.-S-tR--ff-downloader._3M7UQ--minimize ._6_Mtt--header{display:none}.-S-tR--ff-downloader ._6_Mtt--header{padding:10px;font-size:17px;font-family:sans-serif}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{float:right;background:#f1ecec;height:20px;width:20px;text-align:center;padding:2px;margin-top:-10px;cursor:pointer}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#e2dede}.-S-tR--ff-downloader ._13XQ2--error{color:red;padding:10px;font-size:12px;line-height:19px}.-S-tR--ff-downloader ._2dFLA--container{position:relative;height:100%}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info{padding:6px 15px 0;font-family:sans-serif}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info div{margin-bottom:5px;width:100%;overflow:hidden}.-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{margin-top:21px;font-size:11px}.-S-tR--ff-downloader ._10vpG--footer{width:100%;bottom:0;position:absolute;font-weight:700}.-S-tR--ff-downloader ._10vpG--footer ._2V73d--loader{animation:n0BD1--rotation 3.5s linear forwards;position:absolute;top:-120px;left:calc(50% - 35px);border-radius:50%;border:5px solid #fff;border-top-color:#a29bfe;height:70px;width:70px;display:flex;justify-content:center;align-items:center}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar{width:100%;height:18px;background:#dfe6e9;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar ._1FVu9--progress-bar{height:100%;background:#8bc34a;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status{margin-top:10px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1XilH--state{float:left;font-size:.9em;letter-spacing:1pt;text-transform:uppercase;width:100px;height:20px;position:relative}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1jiaj--percentage{float:right}</style><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.6525595c7a9874fa10bd041275e40f17.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.e07f4f02bedd02259fb3f3e092970560.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.c20816b395a36b788bac6782d6a417ef.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/alfalfalfa.0823c767a3bc925f628afd9bed26c958.js.tải xuống" async="" charset="UTF-8"></script></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<div class="container">
+<div class="row">
+<div class="col-md-2 hidden-sm hidden-xs">
+
+    <div class="logo">
+<a class="blog-logo" href="https://codetudau.com/">
+        <img class="blog-logo-image" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/kkkkkkkk.png" alt="Blog Logo">
+</a>
+    </div>
+
+
+<h5>Code từ đầu - machine learning</h5>
+<hr>
+<ul class="list-unstyled menu">
+    <li>
+        <a href="https://github.com/thanhttvn" target="_blank">
+         <i class="el el-github"></i> GitHub
+        </a>
+    </li>
+
+        <li>
+            <a href="https://www.facebook.com/groups/codetudau" target="_blank">
+                <i class="el el-facebook"></i> Facebook
+            </a>
+        </li>
+
+        <li>
+            <a href="https://twitter.com/AdwardVn" target="_blank">
+                <i class="el el-twitter"></i> @AdwardVn
+            </a>
+        </li>
+
+    <li>
+        <a href="skype:thanhtt.vn93?add" target="_blank">
+            <i class="el el-skype"></i> thanhtt.vn93
+        </a>
+
+    </li>
+</ul>
+</div>
+<div class="col-md-10 col-xs-12">
+    
+
+<a href="https://codetudau.com/" class="read-more"><i class="el el-caret-left read-more"></i> home</a>
+<hr>
+
+
+
+
+
+<main role="main">
+
+    <article class="row post tag-nlp tag-xu-ly-ngon-ngu-tu-nhien tag-bag-of-words tag-tf-idf tag-python tag-machine-learning tag-pipeline tag-sklearn tag-svm tag-naive-bayes">
+
+        <header class="col-xs-12">
+        <div class="col-md-10 no-margin no-padding post">
+            <h1 class="title">
+            Machine Learning - NLP: Text Classification sử dụng scikit-learn -
+ python
+
+            </h1>
+             </div>
+            <div class="col-md-12">
+              <img src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/trang-bia-1.png" class="post-image" style="height: auto">
+            </div>
+
+        </header>
+
+        <section class="col-xs-12">
+            <div class="kg-card-markdown"><p>Document/Text classification là 1 phần điển hình và quan trọng trong supervised machine learning. Phân loại các tài liệu(bài báo, tạp chí, trang web, hay là cả những status, comment trên MXH), nó có rất nhiều ứng dụng trong việc phân loại spam mail, email routing, sentiment analysis hay ứng dụng vào tạo chatbot. Trong bài này, tôi sẽ giới thiệu đến với các bạn cách ứng dụng python, cụ thể là sử dụng thư viện scikit-learn để tiến hành phân loại text để giải quyết bài toán thực tế là tạo nền tảng cho chatbot.</p>
+<h1 id="bc1chunbmitrng">Bước 1: Chuẩn bị môi trường</h1>
+<p>Bài viết này tôi sử dụng <a href="https://www.jetbrains.com/pycharm/">Pycharm</a> để viết code. Để nhanh gọn lẹ hơn, bạn hoàn toàn có thể dùng jupyter notebook nhé. Thư viện thì bạn chỉ cần cài đặt <a href="https://www.anaconda.com/download/">anaconda</a> tương ứng với os bạn đang sử dụng.</p>
+<h1 id="bc2dliuvtinxl">Bước 2: Dữ liệu và tiền xử lý</h1>
+<p>Đầu tiên không thể không kể đến là việc chuẩn bị dữ liệu, do mình không tìm được nguồn dữ liệu nào thích hợp, đầy đủ và chính xác nên mình sẽ xây dựng chatbot theo hướng ít dữ liệu training, cụ thể như sau:</p>
+<p>Ví dụ bạn muốn hỏi chatbot thời tiết ngày mai thế nào? Sẽ có vô vàn cách hỏi khác nhau phải không:</p>
+<ul>
+<li>Mai trời mưa không nhỉ ?</li>
+<li>Mai liệu nắng không nhỉ ?</li>
+<li>Ngày mai thời tiết thế nào em ơi ?</li>
+<li>Em nghe nói ngày mai thời tiết đẹp lắm phải không ?</li>
+<li>....</li>
+</ul>
+<p>Đó, cùng một nội dung là hỏi thời tiết ngày mai nhưng với mỗi người, mỗi hoàn cảnh, cảm xúc khác nhau, chúng ta lại có những cách hỏi khác nhau. Với trường hợp như vậy chúng ta không thể viết code theo phương pháp truyền thống là sử dụng if else, switch case được phải không. OK, bạn đã hình dung ra được vấn đề chưa ?</p>
+<p>Đây chính là lúc ứng dụng bài toán <strong>Text Classification</strong> để giải quyết. Công việc chúng ta là làm cách nào đó để với những câu hỏi như trên sẽ phân loại về 1 class có tên là "hoi_thoi_tiet" chẳng hạn.</p>
+<p>Hướng giải quyết của mình là với mỗi nhóm câu hỏi chuẩn bị sẵn từ 3-5 mẫu câu hỏi để làm training data. Sau đó sử dụng phương pháp <strong>Bag-of-words, TF-IDF</strong>, và cuối cùng là sử dụng 1 model tiến hành classification. Nếu bạn chưa biết <strong>Bag-of-words, TF-IDF</strong> là gì thì hãy tham khảo tại <a href="http://codetudau.com/bag-of-words-tf-idf-xu-ly-ngon-ngu-tu-nhien/">bài viết trước</a> của mình nhé.</p>
+<p>Tiếp theo là công đoạn tiền xử lý tiếng việt, mình cũng đã có 1 bài viết nói về vấn đề này tại <a href="http://codetudau.com/gioi-thieu-tien-xu-ly-trong-xu-ly-ngon-ngu-tu-nhien/">đây</a>, điều khó khăn nhất là:</p>
+<p>Trong tiếng Việt, dấu cách (space) không được sử dụng như 1 kí hiệu phân tách từ, nó chỉ có ý nghĩa phân tách các âm tiết với nhau. Vì thế, để xử lý tiếng Việt, công đoạn tách từ (word segmentation) là 1 trong những bài toán cơ bản và quan trọng bậc nhất.</p>
+<p>Ví dụ : từ “đất nước” được tạo ra từ 2 âm tiết “đất” và “nước”, cả 2 âm tiết này đều có nghĩa riêng khi đứng độc lập, nhưng khi ghép lại sẽ mang một nghĩa khác.</p>
+<p>Vì đặc điểm này, bài toán tách từ trở thành 1 bài toán tiền đề cho các ứng dụng xử lý ngôn ngữ tự nhiên khác như phân loại văn bản, tóm tắt văn bản, máy dịch tự động, …</p>
+<p>Về bài toán vietnamese word-segmentation:</p>
+<p>Để giải quyết bài toán này cũng cần một lượng lớn dữ liệu. Dữ liệu đó đòi hỏi sự chính xác cao và tốn rất nhiều công sức. Tuy nhiên hiện nay cộng động xử lý ngôn ngữ tự nhiên tiếng việt khá mạnh nên có rất nhiều mã nguồn chất lượng. Với độ chính xác khá cao, dễ dàng sử dụng nên mình sử dụng thư viện <a href="https://pypi.python.org/pypi/pyvi">pyvi</a> có sẵn trên python. Bạn muốn tự làm công đoạn này hoặc muốn tìm hiểu sâu hơn về phương pháp thì hãy tham khảo thêm phần link đính kèm cuối bài viết nhé.</p>
+<h1 id="bc3trchxutctrngextractingfeatures">Bước 3: Trích xuất đặc trưng (Extracting features)</h1>
+<p>Để có thể sử dụng ML algorithms bạn cần vector hóa văn bản, đoạn text đầu vào. Như đã nói ở trên mình sử dụng <strong>Bag-of-words</strong>. Đầu vào của <strong>Bag-of-words</strong> là đoạn text đã được tách từ sử dụng <strong>pyvi</strong>.</p>
+<p>Đây là đoạn code sử dụng <strong>pyvi</strong> thực hiện tách từ.</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> pyvi.pyvi <span class="hljs-keyword">import</span> ViTokenizer, ViPosTagger
+<span class="hljs-keyword">from</span> sklearn.base <span class="hljs-keyword">import</span> TransformerMixin, BaseEstimator
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FeatureTransformer</span><span class="hljs-params">(BaseEstimator, TransformerMixin)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.tokenizer = ViTokenizer()
+        self.pos_tagger = ViPosTagger()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fit</span><span class="hljs-params">(self, *_)</span>:</span>
+        <span class="hljs-keyword">return</span> self
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">transform</span><span class="hljs-params">(self, X, y=None, **fit_params)</span>:</span>
+        result = X.apply(<span class="hljs-keyword">lambda</span> text: self.tokenizer.tokenize(text))
+        <span class="hljs-keyword">return</span> result
+
+</code></pre>
+<p>Sau đó sẽ dùng phương pháp <strong>Bag-of-words</strong> như mình đã giới thiệu ở bài trước để vector hóa từng câu sau khi được tách từ.</p>
+<p>Bài này tôi cũng sử dụng Pipeline, tại sao nên sử dụng Pipeline và cách sử dụng nếu các bạn chưa rõ thì có thể xem tại bài viết trước của tôi <a href="http://codetudau.com/lam-quen-pipeline-sklearn-python/">tại đây</a>.</p>
+<h1 id="bc4lachnmlalgorithms">Bước 4: Lựa chọn ML algorithms</h1>
+<p><img src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/ml_map.png" alt="ml_map"></p>
+<p>Trên đây là tổng hợp các trường hợp thực tế, đối với lượng data nhiều hay ít và đối tượng bài toán chúng ta sẽ chọn được model phù hợp.</p>
+<p>Trong trường hợp của mình vì lượng data rất ít nên khi tiến hành <strong>Text classification</strong> được khuyên nên sử dụng <strong>Naive Bayes</strong>. Thuật toán này ra sao thì mình không nhắc lại nữa. Thuật toán này cài đặt khá đơn giản, dễ hiểu và độ chính xác rất cao. Bạn có thể tham khảo link wiki <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">tại đây</a> , có ví dụ rất dễ hiểu.</p>
+<p>Với việc sử dụng <strong>Pipeline</strong> và thư viện sklearn, việc viết code trở nên rất đơn giản.</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn.naive_bayes <span class="hljs-keyword">import</span> MultinomialNB
+<span class="hljs-keyword">from</span> sklearn.pipeline <span class="hljs-keyword">import</span> Pipeline
+<span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> CountVectorizer
+<span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> TfidfTransformer
+<span class="hljs-keyword">from</span> src.transformer.feature_transformer <span class="hljs-keyword">import</span> FeatureTransformer
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NaiveBayesModel</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.clf = self._init_pipeline()
+
+<span class="hljs-decorator">    @staticmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_init_pipeline</span><span class="hljs-params">()</span>:</span>
+        pipe_line = Pipeline([
+            (<span class="hljs-string">"transformer"</span>, FeatureTransformer()),<span class="hljs-comment">#sử dụng pyvi tiến hành word segmentation</span>
+            (<span class="hljs-string">"vect"</span>, CountVectorizer()),<span class="hljs-comment">#bag-of-words</span>
+            (<span class="hljs-string">"tfidf"</span>, TfidfTransformer()),<span class="hljs-comment">#tf-idf</span>
+            (<span class="hljs-string">"clf"</span>, MultinomialNB())<span class="hljs-comment">#model naive bayes</span>
+        ])
+
+        <span class="hljs-keyword">return</span> pipe_line
+</code></pre>
+<pre><code class="language-python hljs"><span class="hljs-comment">#!/usr/bin/env python</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">from</span> model.svm_model <span class="hljs-keyword">import</span> SVMModel
+<span class="hljs-keyword">from</span> model.naive_bayes_model <span class="hljs-keyword">import</span> NaiveBayesModel
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TextClassificationPredict</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.test = <span class="hljs-keyword">None</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_train_data</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Tạo train data</span>
+        train_data = []
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Hôm nay trời đẹp không ?"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"hoi_thoi_tiet"</span>})
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Hôm nay thời tiết thế nào ?"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"hoi_thoi_tiet"</span>})
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Hôm nay mưa không ?"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"hoi_thoi_tiet"</span>})
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Chào em gái"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"chao_hoi"</span>})
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Chào bạn"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"chao_hoi"</span>})
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Hello bạn"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"chao_hoi"</span>})
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Hi kimi"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"chao_hoi"</span>})
+        train_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Hi em"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"chao_hoi"</span>})
+        df_train = pd.DataFrame(train_data)
+
+        <span class="hljs-comment"># Tạo test data</span>
+        test_data = []
+        test_data.append({<span class="hljs-string">"feature"</span>: <span class="hljs-string">u"Nóng quá, liệu mưa không em ơi?"</span>, <span class="hljs-string">"target"</span>: <span class="hljs-string">"hoi_thoi_tiet"</span>})
+        df_test = pd.DataFrame(test_data)
+        
+        <span class="hljs-comment"># init model naive bayes</span>
+        model = NaiveBayesModel()
+
+        clf = model.clf.fit(df_train[<span class="hljs-string">"feature"</span>], df_train.target)
+
+        predicted = clf.predict(df_test[<span class="hljs-string">"feature"</span>])
+        
+        <span class="hljs-comment"># Print predicted result</span>
+        <span class="hljs-keyword">print</span> predicted
+        <span class="hljs-keyword">print</span> clf.predict_proba(df_test[<span class="hljs-string">"feature"</span>])
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    tcp = TextClassificationPredict()
+    tcp.get_train_data()
+</code></pre>
+<p>Như code mình viết ở trên, tạm thời có 2 class cần phân loại là <strong>hoi_thoi_tiet</strong> và <strong>chao_hoi</strong>, mỗi class mình có vài câu sử dụng làm training. Test data chính là câu <strong>"Nóng quá, liệu mưa không em ơi?"</strong> Thử xem có phân loại đúng không nhé.</p>
+<p>Kết quả:</p>
+<pre><code class="language-python hljs"><span class="hljs-comment">#predicted result</span>
+[<span class="hljs-string">'hoi_thoi_tiet'</span>]
+<span class="hljs-comment">#predict_proba</span>
+[[ <span class="hljs-number">0.05407486</span>  <span class="hljs-number">0.94592514</span>]]
+</code></pre>
+<p>Nhận thấy kết quả rất chính xác, có đến 94,59% dự đoán về class <strong>hoi_thoi_tiet</strong>. Có 1 lưu ý là model trên chưa tiến hành tuning hyper parameter. Nếu bạn chưa biết về quá trình tuning parameter thì có thể tham khảo bài viết của mình <a href="http://codetudau.com/tim-kiem-high-parameter-voi-scikit-learn/">tại đây</a>.</p>
+<p>Tuy nhiên việc xác định độ chính xác thì cần 1 lượng kha khá dữ liệu thì kết quả mới chính xác nhé.</p>
+<p>Từ ví dụ trên bạn hoàn toàn có thể tự xây dựng 1 hệ thống chatbot cho riêng mình, dữ liệu bạn càng nhiều thì chatbot của bạn càng có khả năng trả lời nhiều câu hỏi, trò chuyện được nhiều hơn. ^^ Đơn giản như việc hỏi thời tiết, sau khi predict về class <strong>hoi_thoi_tiet</strong> bạn code call api weather để lấy thông tin thời tiết và trả lời cho người dùng, rất hữu ích phải không.</p>
+<p>Ví dụ như em này:</p>
+<div style="max-width:70%">
+<p><img src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/----------2018-01-28-22.33.20.png" alt="----------2018-01-28-22.33.20"></p>
+</div>
+<h1 id="bc4b">Bước 4b:</h1>
+<p>Trong trường hợp bạn có 1 lượng lớn data, như trên sơ đồ là hơn 100k samples, bạn có thể thử dùng Support Vector Machines. Tuy dữ liệu mình ít nhưng cũng thử xem sao:</p>
+<pre><code class="language-python hljs"><span class="hljs-keyword">from</span> sklearn.pipeline <span class="hljs-keyword">import</span> Pipeline
+<span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> CountVectorizer
+<span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> TfidfTransformer
+<span class="hljs-keyword">from</span> src.transformer.feature_transformer <span class="hljs-keyword">import</span> FeatureTransformer
+<span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> SGDClassifier
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SVMModel</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.clf = self._init_pipeline()
+
+<span class="hljs-decorator">    @staticmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_init_pipeline</span><span class="hljs-params">()</span>:</span>
+        pipe_line = Pipeline([
+            (<span class="hljs-string">"transformer"</span>, FeatureTransformer()),
+            (<span class="hljs-string">"vect"</span>, CountVectorizer()),
+            (<span class="hljs-string">"tfidf"</span>, TfidfTransformer()),
+            (<span class="hljs-string">"clf-svm"</span>, SGDClassifier(loss=<span class="hljs-string">'log'</span>, penalty=<span class="hljs-string">'l2'</span>, alpha=<span class="hljs-number">1e-3</span>, n_iter=<span class="hljs-number">5</span>, random_state=<span class="hljs-keyword">None</span>))
+        ])
+
+        <span class="hljs-keyword">return</span> pipe_line
+</code></pre>
+<pre><code class="language-python hljs">[<span class="hljs-string">'hoi_thoi_tiet'</span>]
+[[ <span class="hljs-number">0.07582323</span>  <span class="hljs-number">0.92417677</span>]]
+</code></pre>
+<p>Kết quả phân loại cũng chính xác. Tuy nhiên mình chưa có data đủ lớn để đánh giá accuracy cho các model trên.</p>
+<p>Cụ thể về SVM thì mình sẽ cập nhật vào bài viết tiếp theo.</p>
+<h1 id="ktlun">Kết luận</h1>
+<p>Text Classification là 1 bài toán khá hay và nhiều ứng dụng trong thực tế. Ngoài Naive Bayes, SVM, bạn hoàn toàn có thể dùng Random Forest, SLDA, Logistic Regression, Decision Trees, Neural Networks, Boosting and Bagging algorithms ... Và tất nhiên không có model nào tốt nhất, trong thực tế bạn cần thử, đánh giá nhiều model và tiến hành tuning parameter để có thể đạt kết quả tốt nhất.</p>
+<p>Mong bài viết đem lại lợi ích cho các bạn. Hẹn gặp lại các bạn ở các bài viết sau.</p>
+<p><strong>Full source code</strong><br>
+<a href="https://github.com/thanhttvn/machinelearning_codetudau/tree/master/text_classification_example">https://github.com/thanhttvn/machinelearning_codetudau/tree/master/text_classification_example</a></p>
+<h1 id="linkthamkho">Link tham khảo</h1>
+<p><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.106.220&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.106.220&amp;rep=rep1&amp;type=pdf</a></p>
+<p><a href="https://www.scribd.com/fullscreen/342411823?access_key=key-UJOfjnzF9fZfZiAgnaR8">https://www.scribd.com/fullscreen/342411823?access_key=key-UJOfjnzF9fZfZiAgnaR8</a></p>
+<p><a href="https://github.com/magizbox/underthesea/wiki/Vietnamese-NLP-Tools#text-classification">https://github.com/magizbox/underthesea/wiki/Vietnamese-NLP-Tools#text-classification</a></p>
+<p><a href="http://www.clc.hcmus.edu.vn/wp-content/uploads/2016/01/CLC_Vietnamese-Word-Segmentation.pdf">http://www.clc.hcmus.edu.vn/wp-content/uploads/2016/01/CLC_Vietnamese-Word-Segmentation.pdf</a></p>
+</div>
+        </section>
+
+        <footer class="col-xs-12 author">
+
+            <hr>
+
+
+        </footer>
+
+    </article>
+
+    <!--<div id="disqus_thread" class="post"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = ''; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
+
+    <div id="disqus_thread"><iframe id="dsq-app7143" name="dsq-app7143" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 882px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+    <script>
+
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://codetudau.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script> -->
+
+
+</main>
+
+
+</div>
+
+</div>
+</div>
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+          <i class="el el-stop footer-icon"></i>
+            © 2019 <a href="https://codetudau.com/">Code từ đầu - machine learning</a> All rights reserved.<br>
+          </div>
+          <div class="col-xs-6 text-right hidden-sm hidden-xs">Proudly published with <a href="https://ghost.org/">Ghost</a></div>
+        </div>
+      </div>
+    </footer>
+
+    <a href="https://codetudau.com/machine-learning-nlp-scikit-learn/index.html#" class="back-to-top"><span class="fa fa-angle-up fa-2x"></span></a>
+
+    
+
+    <script src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/modernizr.js.tải xuống"></script>
+    <script type="text/javascript" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/index.js.tải xuống"></script>
+    <script type="text/javascript" async="" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/MathJax.js.tải xuống">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [["$", "$"], ["\\(", "\\)"]],
+            processEscapes: true
+        }
+    });
+    </script>
+    <!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script> -->
+
+<iframe style="display: none;" src="./Machine Learning - NLP_ Text Classification sử dụng sklearn python _ Code từ đầu - machine learning_files/saved_resource(1).html"></iframe></body></html>
