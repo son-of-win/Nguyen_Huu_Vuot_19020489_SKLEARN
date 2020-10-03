@@ -11,7 +11,7 @@
 * max{f(w,d):w thuộc d} - số lần xuất hiện nhiều nhất của một từ bất kì trong văn bản
 **IDF** 
 * tấn số nghịch của một từ trong văn bản
-* tính IDF để giảm giá trị của những từ phổ biến (các phó từ, liên từ..) . Mỗi từ chỉ có 1 giá trị IDE duy nhất trong tập văn bản
+* tính IDF để giảm giá trị của những từ phổ biến (các phó từ, liên từ..) . Mỗi từ chỉ có 1 giá trị IDE duy nhất trong tập văn bản.
 ![alt](https://nguyenvanhieu.vn/wp-content/uploads/2019/01/idf.png)
 * trong đó:
 * |D| : - tổng số văn bản trong tập D
